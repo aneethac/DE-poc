@@ -1,0 +1,5 @@
+source_schema,source_table,target_schema,target_table,filter_condition,column_exclusions,column_inclusions,primary_keys,col_type_overrides,aggregate_tolerance_abs,aggregate_tolerance_rel,collect_stats,check_duplicates,check_ri,custom_sql,partition_key,partition_start,partition_end,partition_values,top_n_frequent,exact_distinct,enable_mode,force_full_scan,force_duplicate_scan,force_ri_scan,drift_null_pct_threshold,drift_distinct_pct_threshold,drift_rowcount_pct_threshold,drift_numeric_mean_threshold
+biw,fact_sales,biw_sf,fact_sales,,created_date,,sale_id,,0.01,0.05,true,true,false,,sale_date,2024-01-01,2024-12-31,,5,false,false,false,false,false,5.0,10.0,20.0,15.0
+biw,dim_customer,biw_sf,dim_customer,,,customer_id;customer_name;email,customer_id,,0.0,0.0,false,false,false,,,,,,10,true,true,false,false,false,3.0,5.0,10.0,10.0
+biw,fact_inventory,biw_sf,fact_inventory,,audit_col,,,,0.05,0.1,true,false,false,SELECT COUNT(*) FROM {table} WHERE quantity < 0,region,,,NORTH;SOUTH;EAST,5,false,false,false,false,false,5.0,10.0,20.0,15.0
+biw,dim_product,biw_sf,dim_product,,,,product_id,,0.0,0.0,false,true,true,,,,,,5,false,false,true,true,false,5.0,10.0,20.0,15.0
